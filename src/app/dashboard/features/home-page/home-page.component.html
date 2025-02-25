@@ -1,0 +1,52 @@
+<div>
+  <!-- CARROUSEL -->
+<div class="m-2 p-2 bg-slate-700">
+    
+    <section class="h-1/2">
+        
+        <swiper-container navigation="true" navigation="true" autoplay-delay="2500" ssr="false">
+          <!-- container -->
+            <swiper-slide *ngFor="let img of images">
+                <img [src]="img" alt="Imagen de prueba">
+            </swiper-slide>                    
+        </swiper-container>            
+    </section>
+
+    <section class="bg-blue-700 text-white py-20 px-6 h-1/2">
+        <div class="max-w-6xl mx-auto flex  justify-center flex-col lg:flex-row items-center gap-8">
+          <!-- Texto -->
+          <div class="lg:w-1/2 text-center lg:text-left">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mt-20">¡LOS MEJORES PRECIOS DEL BARRIO!</h2>
+            <p class="my-10 text-lg">Casero(a), a mí nadie me gana, yo tengo siempre los <span class="text-yellow-400 font-semibold">mejores precios</span>, y además, estoy <span class="text-yellow-400 font-semibold">cerca a tu hogar</span>.</p>
+
+            <p class="mt-10">¡No te pierdas los mejores precios del barrio aquí!</p>
+            
+            <button class="mt-6 mb-15 inline-block bg-yellow-400 text-blue-900 font-bold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 transition" (click)="navigateTo('productos')">
+              QUIERO VER
+            </button>
+          </div>
+      
+          <!-- Imagen -->
+          <div class="lg:w-1/2 flex items-center justify-center">
+            <img src="" alt="Mejores precios" class="w-80 lg:w-[400px]">
+          </div>
+        </div>
+      </section>
+      
+
+    <div class="h-1/4">
+        <h1>Revisa nuestros productos: </h1>
+        <li *ngFor="let item of list">
+            {{item}}
+        </li>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- style="width: 100%; height: auto;" -->
