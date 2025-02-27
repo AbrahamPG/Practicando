@@ -8,8 +8,10 @@ export class ProductService {
     private http = inject(HttpClient)
 
     getListProducts():Observable<any>{
-        const url = 'http://127.0.0.1:8000/productos/v1/products/'
+        const url = 'https://djangoapi-2xnu.onrender.com/products/'
         return this.http.get<any>(url)
     } 
     
 }
+
+// 'http://127.0.0.1:8000/productos/v1/products/'
