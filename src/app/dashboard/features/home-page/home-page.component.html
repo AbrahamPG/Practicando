@@ -4,7 +4,7 @@
     
     <section class="h-1/2">
         
-        <swiper-container navigation="true" navigation="true" autoplay-delay="2500" ssr="false">
+        <swiper-container navigation="true" navigation="true" autoplay-delay="3500" ssr="false">
           <!-- container -->
             <swiper-slide *ngFor="let img of images">
                 <img [src]="img" alt="Imagen de prueba">
@@ -28,18 +28,16 @@
       
           <!-- Imagen -->
           <div class="lg:w-1/2 flex items-center justify-center">
-            <img src="" alt="Mejores precios" class="w-80 lg:w-[400px]">
+            <img 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2CZP6B0y6K6tA-_ocSg5VI2qXi8NNI_48cQ&s" 
+            alt="Mejores precios" 
+            class="w-80 lg:w-[400px] rounded-lg shadow-lg">
           </div>
         </div>
       </section>
       
 
-    <div class="h-1/4">
-        <h1>Revisa nuestros productos: </h1>
-        <li *ngFor="let item of list">
-            {{item}}
-        </li>
-    </div>
+    
 </div>
 </div>
 

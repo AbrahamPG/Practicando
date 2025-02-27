@@ -33,9 +33,9 @@ export class HomePageComponent {
   ]
 
   images = [
-    'apio.png',
-    'beterraga.jpg',
-    'culantro.png',
+    'oferta.png',
+    'carrousel2.png',
+    'delivery.png',
     // 'https://picsum.photos/3000/1000?random=4',
     // 'https://picsum.photos/3000/1000?random=5',
     // 'https://picsum.photos/3000/1000?random=6',

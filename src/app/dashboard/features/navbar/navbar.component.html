@@ -1,47 +1,143 @@
-<div class="w-full h-16 flex items-center px-4">
+<mat-toolbar class="relative md:top-0 ">
+    <span>Verduleria Ada</span>
+    <span class="example-spacer"></span>
+    <div class="hidden md:flex gap-4 justify-center">
+        <a 
+            type="button"
+            routerLink="home"
+            class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+            routerLinkActive= "border-b-4 border-green-600">
+            Home
+        </a>
+    
+        <a 
+            type="button"
+            routerLink="productos"
+            class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+            routerLinkActive= "border-b-4 border-green-600">
+            Productos
+        </a>
+    
+        <a
+        type="button" 
+        routerLink="acerca-de-nosotros"
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
+            Acerca de nosotros
+        </a>
+    
+        <a
+        type="button" 
+        routerLink="trabaja-con-nosotros"
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
+            Trabaja conmigo
+        </a>
+    
+        <a
+        type="button" 
+        routerLink="blog"
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
+        <div class="relative">
+            <mat-icon class="text-white">shopping_cart</mat-icon>
+            <span *ngIf="cartCount > 0" 
+                  class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {{ cartCount }}
+            </span>
+          </div>
+          
+        </a>
+    </div>
+    <div class="md:hidden">
+        <button mat-icon-button (click)="toggleMenu()" class="example-icon" aria-label="Toggle menu">
+          <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
+      </div> 
+    
+  </mat-toolbar>
+
+
+  <!-- aparece si hacemos togglemenu -->
+  <div *ngIf="menuOpen"  class="md:hidden absolute top-28 bg-gray-800 p-4 flex flex-col gap-2 z-50">
+    <a routerLink="home" (click)="toggleMenu()" class="text-white hover:border-b-4 hover:border-green-500 w-full text-center">Home</a>
+    <a routerLink="productos" (click)="toggleMenu()" class="text-white hover:border-b-4 hover:border-green-500 w-full text-center">Productos</a>
+    <a routerLink="acerca-de-nosotros" (click)="toggleMenu()" class="text-white hover:border-b-4 hover:border-green-500 w-full text-center">Acerca de nosotros</a>
+    <a routerLink="trabaja-con-nosotros" (click)="toggleMenu()" class="text-white hover:border-b-4 hover:border-green-500 w-full text-center">Trabaja conmigo</a>
+    <a routerLink="blog" (click)="toggleMenu()" class="text-white hover:border-b-4 hover:border-green-500 w-full text-center">  <mat-icon>shopping_cart</mat-icon></a>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="w-full h-16 flex items-center px-4">
     <div class="flex w-2/5 text-white text-xl font-bold">
         <button routerLink="home" >Verduleria Ada</button>
     </div>
-    <div class="flex w-3/5 gap-4 justify-center">
-        <button 
+    <div class="flex w-3/5 gap-4 justify-center ">
+        <a 
             type="button"
             routerLink="home"
-            class="flex-1 text-white hover:border-b-4 hover:border-blue-500"
-            routerLinkActive= "border-b-4 border-blue-500">
+            class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+            routerLinkActive= "border-b-4 border-green-600">
             Home
-        </button>
+        </a>
     
-        <button 
+        <a 
             type="button"
             routerLink="productos"
-            class="flex-1 text-white hover:border-b-4 hover:border-blue-500"
-            routerLinkActive= "border-b-4 border-blue-500">
+            class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+            routerLinkActive= "border-b-4 border-green-600">
             Productos
-        </button>
+        </a>
     
-        <button
+        <a
         type="button" 
         routerLink="acerca-de-nosotros"
-        class="flex-1 text-white hover:border-b-4 hover:border-blue-500"
-        routerLinkActive= "border-b-4 border-blue-500">
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
             Acerca de nosotros
-        </button>
+        </a>
     
-        <button
+        <a
         type="button" 
         routerLink="trabaja-con-nosotros"
-        class="flex-1 text-white hover:border-b-4 hover:border-blue-500"
-        routerLinkActive= "border-b-4 border-blue-500">
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
             Trabaja conmigo
-        </button>
+        </a>
     
-        <button
+        <a
         type="button" 
         routerLink="blog"
-        class="flex-1 text-white hover:border-b-4 hover:border-blue-500"
-        routerLinkActive= "border-b-4 border-blue-500">
+        class="flex flex-col items-center flex-1 text-white hover:border-b-4 hover:border-green-500"
+        routerLinkActive= "border-b-4 border-green-600">
             Blog
-        </button>
+        </a>
     
     </div>
-</div>
+</div> -->
