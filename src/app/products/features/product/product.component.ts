@@ -5,7 +5,6 @@ import { Product } from '../product.model';
 import { CarritoService } from '../../../core/services/carrito.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 
 @Component({
@@ -25,11 +24,10 @@ export class ProductComponent implements OnInit{
 
   
   public products:Product[]=[]
-  public displayedProducts: Product[] = [] //Productos de la pagina actual
   public cantidadProductos: number = 0; // Contador de productos en el carrito
   public pageSize = 8; // Cantidad de productos por página
   public totalItems = 0;
-  public currentPage = 0; //actual pagina
+  public currentPage = 1; //actual pagina
 
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginator
 
@@ -38,14 +36,7 @@ export class ProductComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.productService.getListProducts().subscribe(
-      (rpta:Product[])=>{
-        console.log(rpta)
-        this.products = rpta;
-        this.totalItems = this.products.length;
-        this.updateDisplayedProducts();
-      }
-    )
+    this.loadProducts(this.currentPage)
 
   // Suscribirse a la cantidad de productos en el carrito
     this.cartService.cantidad$.subscribe(
@@ -57,17 +48,19 @@ export class ProductComponent implements OnInit{
   }
 
 
-  updateDisplayedProducts(): void {
-    const startIndex = this.currentPage * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.displayedProducts = this.products.slice(startIndex, endIndex);
+
+  loadProducts(page: number): void {
+    this.productService.getProductsPaginated(page).subscribe(response => {
+      this.products = response.results; // La API devuelve los productos en "results"
+      this.totalItems = response.count; // La API devuelve el total de productos en "count"
+    });
   }
+
 
   // Se ejecuta cuando cambia la paginación
   onPageChange(event: any): void {
-    this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.updateDisplayedProducts();
+    this.currentPage = event.pageIndex + 1; // Angular usa índice 0, pero la API usa índice 1
+    this.loadProducts(this.currentPage);
   }
 
   

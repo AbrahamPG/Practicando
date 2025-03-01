@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
@@ -10,14 +10,15 @@ export class ProductService {
 
     private apiUrl = environment.apiUrl
 
-    getListProducts(): Observable<any> {
-        return this.http.get<any>(this.apiUrl).pipe(
-            catchError(error => {
-                console.warn('Error en la API', error);
-                throw error;
-            })
-        );
-    }
+    // Obtener productos con paginación
+  getProductsPaginated(page: number = 1): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?page=${page}`).pipe(
+      catchError(error => {
+        console.warn('Error en la API', error);
+        return throwError(() => new Error('Error al obtener productos'));
+      })
+    );
+  }
 
 
 }
