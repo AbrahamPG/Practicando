@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
     
     private http = inject(HttpClient)
 
-    private apiWeb = 'https://djangoapi-2xnu.onrender.com/productos/v1/products/';
-    private apiLocal = 'http://127.0.0.1:8000/productos/v1/products/';
+    private apiUrl = environment.apiUrl
 
     getListProducts(): Observable<any> {
-        return this.http.get<any>(this.apiWeb).pipe(
+        return this.http.get<any>(this.apiUrl).pipe(
             catchError(error => {
-                console.warn('Error en la API web, conectando a la API local...', error);
-                return this.http.get<any>(this.apiLocal);
+                console.warn('Error en la API', error);
+                throw error;
             })
         );
     }
